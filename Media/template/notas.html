@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Sistema de notas</title>
 </head>
 <body>
-$END$
+<h1>Digite as notas..</h1>
+<form action="http://127.0.0.1:5000/notas" method="post">
+{% for x in range(4) %}
+  <P><input type="number" name="nota{{x}}" id="nota{{x}}" placeholder="Nota{{x}}"></P>
+  {% endfor %}
+  <button type="submit">Enviar</button>
+</form>
+
 </body>
 </html>

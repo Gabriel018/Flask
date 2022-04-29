@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Situaçao</title>
 </head>
 <body>
-$END$
+{% if total >=60 %}
+<p>Aprovado</p>
+{% else %}
+<p>Reprovado</p>
+
+{% endif %}
 </body>
 </html>
