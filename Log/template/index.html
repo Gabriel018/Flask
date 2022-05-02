@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Loging</title>
 </head>
 <body>
-{% if username != '' %}
-<p>Usuario logado:{{username}}</p>
-{% else %}
-<P>Nao ha usuario logado</P>
-<p>clique aqui para logar<a href="/login"> Logar</a></p>
-{% endif %}
+<h1>Login</h1>
+<form action="/" method="post">
+    <input type="text" name="username" required/>
+    <input type="password" name="password" required/>
+    <input type="submit"/>
+
+</form>
 </body>
 </html>

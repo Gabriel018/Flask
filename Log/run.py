@@ -1,24 +1,36 @@
 import requests
-from flask import Flask,render_template,session,request,redirect,url_for
+from flask import Flask,render_template,session,request,redirect,url_for,g
+
+import  os
 
 
 app = Flask(__name__,template_folder='template')
 
-app.secret_key='12345'
+app.secret_key= os.urandom(24)
 
-@app.route('/')
+@app.route('/', methods=["GET","POST"])
 def index():
-    username = ''
-    if username in session:
-       username = session['username']
-    return   render_template('index.html', username=username)
+ if request.method == "POST":
+     session.pop('user',None)
 
-@app.route('/login', methods=['GET','POST'])
+     if request.form['password'] == 'password':
+        session['user'] = request.form['username']
+        return redirect(url_for('login'))
+ return render_template('index.html')
+
+@app.route('/login')
 def login():
- if request.method == 'POST' and request.form['username'] :
-     session['username'] = request.form['username']
-     return redirect(url_for('index'))
- return render_template('log.html')
+ if g.user:
+     return render_template('log.html', user=session['user'])
+ return redirect(url_for('index'))
+
+@app.before_request
+def before_request():
+    g.user = None
+
+    if 'user' in session:
+        g.user = session['user']
+
 
 if __name__ == '__main__':
 
