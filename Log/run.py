@@ -4,7 +4,7 @@ from flask import Flask,render_template,session,request,redirect,url_for,g
 import  os
 
 
-app = Flask(__name__,template_folder='template')
+app = Flask(__name__,template_folder='templates')
 
 app.secret_key= os.urandom(24)
 
@@ -16,7 +16,7 @@ def index():
      if request.form['password'] == 'password':
         session['user'] = request.form['username']
         return redirect(url_for('login'))
- return render_template('index.html')
+ return render_template('contatos.html')
 
 @app.route('/login')
 def login():

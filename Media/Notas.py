@@ -1,6 +1,6 @@
 from flask import Flask,render_template,request
 
-Media = Flask(__name__,template_folder='template')
+Media = Flask(__name__,template_folder='templates')
 
 @Media.route('/')
 def home():
