@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar</title>
+</head>
+<body>
+<h1>Alterar Dados</h1>
+<form action="/edit{{Cadastro.id}}" method="post">
+  <input type="text" name="nome" value="{{Cadastro.nome}}">
+  <input type="email" name="email" value="{{Cadastro.email}}">
+  <input type="submit">
+</form>
+</body>
+</html>

@@ -36,6 +36,26 @@ def add():
 
     return render_template('add.html')
 
+@app.route('/edit<int:id>',  methods=['GET', 'POST'])
+def edit(id):
+    Cadastro = Agenda.query.get(id)
+    if request.method == "POST":
+       Cadastro.nome = request.form['nome']
+       Cadastro.email = request.form['email']
+       db.session.commit()
+       return redirect(url_for('index'))
+
+    return render_template('edit.html', Cadastro=Cadastro)
+
+@app.route('/deletar<int:id>')
+def delete(id):
+
+    Cadastro = Agenda.query.get(id)
+    db.session.delete(Cadastro)
+    db.session.commit()
+
+    return  redirect(url_for('index'))
+
 if __name__ == '__main__':
     db.create_all()
     app.run(debug=True)
